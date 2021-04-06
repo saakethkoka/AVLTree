@@ -10,7 +10,7 @@ private:
     DSAVLTreeNode<A,T> *root;
 
     void insert(A key, T value, DSAVLTreeNode<A,T> *&t);
-    void balence(DSAVLTreeNode<A,T> *&t);
+    void balance(DSAVLTreeNode<A,T> *&t);
 public:
     //constrtors - destructor
     DSAVLTree(const DSAVLTreeNode<A,T>* root = nullptr); //default constructor
@@ -60,12 +60,12 @@ void DSAVLTree<A, T>::insert(A key, T value, DSAVLTreeNode<A, T> *&t) {
     else if(key < t->key){
         insert(key, value, t->left);
     }
-    balence(t);
+    balance(t);
 }
 
 // TODO:
 template<class A, class T>
-void DSAVLTree<A, T>::balence(DSAVLTreeNode<A, T> *&t) {
+void DSAVLTree<A, T>::balance(DSAVLTreeNode<A, T> *&t) {
 
 }
 
