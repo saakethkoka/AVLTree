@@ -34,7 +34,7 @@ private:
 
 public:
     //constructors - destructor
-    DSAVLTree(const DSAVLTreeNode<A,T>* root = nullptr); //default constructor
+    DSAVLTree(DSAVLTreeNode<A,T>* root = nullptr); //default constructor
     DSAVLTree(const DSAVLTree& otherTree); //copy constructor
     ~DSAVLTree(); //destructor
 
@@ -58,8 +58,8 @@ public:
 
 // TODO:
 template<class A, class T>
-DSAVLTree<A, T>::DSAVLTree(const DSAVLTreeNode<A, T> *targetNode) {
-
+DSAVLTree<A, T>::DSAVLTree(DSAVLTreeNode<A, T> *targetNode) {
+    root = targetNode;
 }
 
 // TODO:
