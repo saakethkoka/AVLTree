@@ -14,7 +14,9 @@ private:
     void insert(A key, T value, DSAVLTreeNode<A,T> *&t);
     void balance(DSAVLTreeNode<A,T> *&t);
 
-    void printPreOrder(DSAVLTreeNode<A,T> *node);
+    void printPreOrder(const DSAVLTreeNode<A,T>* node) const;
+    void printInOrder(const DSAVLTree<A,T>* node) const;
+    void printPostOrder(const DSAVLTree<A,T>* node) const;
 
     // Rotation Methods:
     void rotateWithLeftChild(const DSAVLTreeNode<A,T>*& node);
@@ -43,9 +45,9 @@ public:
     DSAVLTree<A,T> operator=(const DSAVLTree<A,T> &list2BCopied); //overloaded assignment operator
 
     //print operators
-    void printPreOrder(); // pre order print
-    void printInOrder(); // in order print
-    void printPostOrder(); //post order print
+    void printPreOrder() const; // pre order print
+    void printInOrder() const; // in order print
+    void printPostOrder() const; //post order print
 
 
 };
@@ -110,12 +112,12 @@ void DSAVLTree<A, T>::balance(DSAVLTreeNode<A, T> *&t) {
 }
 
 template<class A, class T>
-void DSAVLTree<A, T>::printPreOrder() {
+void DSAVLTree<A, T>::printPreOrder() const{
     printPreOrder(root);
 }
 
 template<class A, class T>
-void DSAVLTree<A, T>::printPreOrder(DSAVLTreeNode<A, T> *node) {
+void DSAVLTree<A, T>::printPreOrder(const DSAVLTreeNode<A, T> *node) const{
     if(node == nullptr){
         return;
     }
@@ -123,6 +125,23 @@ void DSAVLTree<A, T>::printPreOrder(DSAVLTreeNode<A, T> *node) {
     printPreOrder(node->left);
     printPreOrder(node->right);
 }
+
+template<class A, class T>
+void DSAVLTree<A,T>::printInOrder() const {
+    printInOrder(root);
+}
+
+template<class A, class T>
+void DSAVLTree<A, T>::printInOrder(const DSAVLTree<A, T> *node) const {
+    if(node == nullptr){
+        return;
+    }
+    printInOrder(node->left);
+    std::cout << node->key << ": " << node->value << std::endl;
+    printInOrder(node->right);
+}
+
+
 
 template<class A, class T>
 void DSAVLTree<A, T>::insert(A key, T value) {
@@ -149,6 +168,7 @@ void DSAVLTree<A, T>::rotateWithLeftChild(const DSAVLTreeNode<A, T>*& node) {
     leftNode.height = std::max(getHeight(leftNode.left), node->height) + 1;
     node = leftNode;
 }
+
 
 
 
