@@ -15,7 +15,7 @@ private:
     void balance(DSAVLTreeNode<A,T> *&t);
 
     //contains helper
-    bool contains(const A& key, const DSAVLTreeNode<A,T>*& node) const;
+    bool contains(const A& key, DSAVLTreeNode<A,T>*& node) const;
 
     //print methods
     void printPreOrder(const DSAVLTreeNode<A,T>* node) const;
@@ -212,14 +212,28 @@ void DSAVLTree<A, T>::doubleWithRightChild(DSAVLTreeNode<A, T> *&node) {
 
 //TODO contains
 template<class A, class T>
-bool DSAVLTree<A, T>::contains(const A &key, const DSAVLTreeNode<A, T> *&node) const {
-    return false;
+bool DSAVLTree<A, T>::contains(const A &key, DSAVLTreeNode<A, T> *&node) const {
+    if(node == nullptr){
+        return false;
+    }
+    if(node->key == key){
+        return true;
+    }
+    if(node->key < key){
+        return contains(key, node->right);
+    }
+    else{
+        return contains(key, node->left);
+    }
 }
 
 template<class A, class T>
 bool DSAVLTree<A, T>::contains(const A &key) const{
-    if(this->root->key)
-    return false;
+    if(this->root->key == key){
+        return true;
+    }
+    DSAVLTreeNode<A,T> *node = root;
+    return contains(key, node);
 }
 
 

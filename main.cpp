@@ -15,5 +15,11 @@ int main() {
     tree.printPreOrder();
     std::cout << std::endl;
     tree.printPostOrder();
+    std::cout << std::endl;
+    std::cout << std::endl;
+    for(int i = 0; i < 6; i++){
+        std::cout << tree.contains(i) << std::endl;
+    }
+
     return 0;
 }
