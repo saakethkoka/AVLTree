@@ -141,6 +141,21 @@ void DSAVLTree<A, T>::printInOrder(const DSAVLTree<A, T> *node) const {
     printInOrder(node->right);
 }
 
+template<class A, class T>
+void DSAVLTree<A, T>::printPostOrder() const {
+    printPostOrder(root);
+}
+
+template<class A, class T>
+void DSAVLTree<A, T>::printPostOrder(const DSAVLTree<A, T> *node) const {
+    if(node == nullptr){
+        return;
+    }
+    printPostOrder(node->left);
+    printPostOrder(node->right);
+    std::cout << node->key << ": " << node->value << std::endl;
+}
+
 
 
 template<class A, class T>
@@ -178,6 +193,9 @@ void DSAVLTree<A, T>::rotateWithRightChild(const DSAVLTreeNode<A, T> *&node) {
     rightNode.height = std::max(getHeight(rightNode.right), node->height) + 1;
     node = rightNode;
 }
+
+
+
 
 
 
