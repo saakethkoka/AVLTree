@@ -3,8 +3,8 @@
 //
 #pragma once
 #include <iostream>
+#include <stdexcept>
 #include "DSAVLTreeNode.h"
-#include <iostream>
 
 template<class A, class T>
 class DSAVLTree{
@@ -55,7 +55,7 @@ public:
 
     //print operators
     void printPreOrder() const; // pre order print
-    void printInOrder(); // in order print
+    void printInOrder() const; // in order print
     void printPostOrder() const; //post order print
 
 
@@ -159,7 +159,7 @@ void DSAVLTree<A, T>::printPreOrder(const DSAVLTreeNode<A, T>* node) const{
 }
 
 template<class A, class T>
-void DSAVLTree<A,T>::printInOrder() {
+void DSAVLTree<A,T>::printInOrder() const{
     printInOrder(root);
 }
 
