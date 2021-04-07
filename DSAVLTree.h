@@ -65,7 +65,7 @@ DSAVLTree<A, T>::DSAVLTree(DSAVLTreeNode<A, T> *targetNode) {
 // TODO:
 template<class A, class T>
 DSAVLTree<A, T>::DSAVLTree(const DSAVLTree &otherTree) {
-
+    root = new DSAVLTreeNode<A,T>(otherTree.root->key,otherTree.root->value,otherTree.root->left, otherTree.root->right);
 }
 
 // TODO:
