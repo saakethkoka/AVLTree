@@ -4,6 +4,7 @@
 #pragma once
 #include <iostream>
 #include "DSAVLTreeNode.h"
+#include <iostream>
 
 template<class A, class T>
 class DSAVLTree{
@@ -25,6 +26,9 @@ public:
     void printInOrder(); //in order print
 
 
+
+    // Traversal Functions:
+    void printPreOrder(DSAVLTreeNode<A,T> node);
 
 
 };
