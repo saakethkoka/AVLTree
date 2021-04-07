@@ -169,6 +169,16 @@ void DSAVLTree<A, T>::rotateWithLeftChild(const DSAVLTreeNode<A, T>*& node) {
     node = leftNode;
 }
 
+template<class A, class T>
+void DSAVLTree<A, T>::rotateWithRightChild(const DSAVLTreeNode<A, T> *&node) {
+    DSAVLTreeNode<A,T> rightNode = node->right;
+    node->right = rightNode.right;
+    rightNode.left = node;
+    node->height = std::max(getHeight(node->left), getHeight(node->right)) + 1;
+    rightNode.height = std::max(getHeight(rightNode.right), node->height) + 1;
+    node = rightNode;
+}
+
 
 
 
