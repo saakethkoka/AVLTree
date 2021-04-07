@@ -12,6 +12,7 @@ private:
     T value;
     DSAVLTreeNode<A,T>* left;
     DSAVLTreeNode<A,T>* right;
+    int height;
 
 public:
     DSAVLTreeNode(A key, T value, DSAVLTreeNode* after = nullptr, DSAVLTreeNode* before = nullptr);
@@ -23,6 +24,7 @@ DSAVLTreeNode<A, T>::DSAVLTreeNode(A key, T value, DSAVLTreeNode *left, DSAVLTre
     this->value = value;
     this->left = left;
     this->right = right;
+    this->height = 0;
 }
 
 
