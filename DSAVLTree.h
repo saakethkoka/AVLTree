@@ -46,7 +46,7 @@ public:
     bool contains(const A& key) const;
 
     //overloaded operators
-    DSAVLTree<A,T> operator=(const DSAVLTree<A,T> &list2BCopied); //overloaded assignment operator
+    DSAVLTree<A,T>& operator=(const DSAVLTree<A,T>& other); //overloaded assignment operator
 
     //print operators
     void printPreOrder() const; // pre order print
@@ -56,9 +56,10 @@ public:
 
 };
 
+//TODO is this a deep copy? (verify)
 template<class A, class T>
 DSAVLTree<A, T>::DSAVLTree(DSAVLTreeNode<A, T> *targetNode) {
-    root = targetNode;
+    root = new DSAVLTreeNode<A,T>(targetNode->key,targetNode->value,targetNode->left, targetNode->right);
 }
 
 // TODO:
@@ -73,9 +74,22 @@ DSAVLTree<A, T>::~DSAVLTree() {
 
 }
 
+//TODO
 template<class A, class T>
-DSAVLTree<A, T> DSAVLTree<A, T>::operator=(const DSAVLTree<A, T> &list2BCopied) {
-    return DSAVLTree<A, T>();
+DSAVLTree<A, T>& DSAVLTree<A, T>::operator=(const DSAVLTree<A, T>& other) {
+    if(this == &other){ //Checks to see if self = self
+        return *this;
+    }
+    if(this->root != nullptr){
+        this->~DSAVLTree<A,T>(); //deletes data
+    }
+    if(other->root == nullptr){
+        this->root = nullptr; //makes root nullptr is other tree has no data
+    }
+
+    this->root = new DSAVLTreeNode<A,T>(other.root->key,other.root->value,other.root->left,other.root->right);
+
+    return *this;
 }
 
 template<class A, class T>
