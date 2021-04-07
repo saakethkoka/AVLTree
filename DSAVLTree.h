@@ -17,10 +17,10 @@ private:
     void printPreOrder(DSAVLTreeNode<A,T> *node);
 
     // Rotation Methods:
-    void rotateWithLeftChild(DSAVLTreeNode<A,T> *&node);
-    void rotateWithRightChild(DSAVLTreeNode<A,T> *&node);
-    void doubleWithLeftChild(DSAVLTree<A,T> *&node);
-    void doubleWithRightChild(DSAVLTree<A,T> *&node);
+    void rotateWithLeftChild(const DSAVLTreeNode<A,T>*& node);
+    void rotateWithRightChild(const DSAVLTreeNode<A,T>*& node);
+    void doubleWithLeftChild(const DSAVLTree<A,T>*& node);
+    void doubleWithRightChild(const DSAVLTree<A,T>*& node);
 
     // Get Height of node:
     int getHeight(DSAVLTreeNode<A,T> *&node);
@@ -34,15 +34,18 @@ public:
 
     // Insertion methods:
     void insert(A key, T value);
+    void insert(const DSAVLTreeNode<A,T>*& node);
+
     // Contains Method:
-    bool contains(A key);
+    bool contains(const A& key);
 
     //overloaded operators
     DSAVLTree<A,T> operator=(const DSAVLTree<A,T> &list2BCopied); //overloaded assignment operator
 
     //print operators
-    void printInOrder(); // in order print
     void printPreOrder(); // pre order print
+    void printInOrder(); // in order print
+    void printPostOrder(); //post order print
 
 
 };
