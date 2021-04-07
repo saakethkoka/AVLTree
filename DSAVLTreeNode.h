@@ -35,7 +35,7 @@ void DSAVLTreeNode<A, T>::calc_height() { //This calulates height
     }
     this->left->calc_height();
     this->right->calc_height();
-    height = max(this->left->height, this->right->height) + 1;
+    height = std::max(this->left->height, this->right->height) + 1;
 }
 
 
