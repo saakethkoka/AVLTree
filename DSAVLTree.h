@@ -19,10 +19,10 @@ private:
     void printPostOrder(const DSAVLTree<A,T>* node) const;
 
     // Rotation Methods:
-    void rotateWithLeftChild(const DSAVLTreeNode<A,T>*& node);
-    void rotateWithRightChild(const DSAVLTreeNode<A,T>*& node);
-    void doubleWithLeftChild(const DSAVLTree<A,T>*& node);
-    void doubleWithRightChild(const DSAVLTree<A,T>*& node);
+    void rotateWithLeftChild(DSAVLTreeNode<A,T>*& node);
+    void rotateWithRightChild(DSAVLTreeNode<A,T>*& node);
+    void doubleWithLeftChild(DSAVLTreeNode<A,T>*& node);
+    void doubleWithRightChild(DSAVLTreeNode<A,T>*& node);
 
     // Get Height of node:
     int getHeight(DSAVLTreeNode<A,T> *&node);
@@ -93,7 +93,7 @@ void DSAVLTree<A, T>::insert(A key, T value, DSAVLTreeNode<A, T> *&t) {
 template<class A, class T>
 void DSAVLTree<A, T>::balance(DSAVLTreeNode<A, T> *&t) {
     if(getHeight(t->left) - getHeight(t->right) > 1){
-        if(getHeight(t->left->left >= getHeight(t->left->right))){
+        if(getHeight(t->left->left) >= getHeight(t->left->right)){
             rotateWithLeftChild(t);
         }
         else{
@@ -101,7 +101,7 @@ void DSAVLTree<A, T>::balance(DSAVLTreeNode<A, T> *&t) {
         }
     }
     else if(getHeight(t->right) - getHeight(t->left) > 1){
-        if(getHeight(t->right->right >= getHeight(t->right->left))){
+        if(getHeight(t->right->right) >= getHeight(t->right->left)){
             rotateWithRightChild(t);
         }
         else{
@@ -175,33 +175,33 @@ int DSAVLTree<A, T>::getHeight(DSAVLTreeNode<A, T> *&node) {
 
 // TODO: I have no idea if this is right:
 template<class A, class T>
-void DSAVLTree<A, T>::rotateWithLeftChild(const DSAVLTreeNode<A, T>*& node) {
-    DSAVLTreeNode<A,T> leftNode = node->left;
-    node->left = leftNode.right;
-    leftNode.right = node;
+void DSAVLTree<A, T>::rotateWithLeftChild(DSAVLTreeNode<A, T>*& node) {
+    DSAVLTreeNode<A,T> *leftNode = node->left;
+    node->left = leftNode->right;
+    leftNode->right = node;
     node->height = std::max(getHeight(node->left), getHeight(node->right)) + 1;
-    leftNode.height = std::max(getHeight(leftNode.left), node->height) + 1;
+    leftNode->height = std::max(getHeight(leftNode->left), node->height) + 1;
     node = leftNode;
 }
 
 template<class A, class T>
-void DSAVLTree<A, T>::rotateWithRightChild(const DSAVLTreeNode<A, T> *&node) {
-    DSAVLTreeNode<A,T> rightNode = node->right;
-    node->right = rightNode.right;
-    rightNode.left = node;
+void DSAVLTree<A, T>::rotateWithRightChild(DSAVLTreeNode<A, T> *&node) {
+    DSAVLTreeNode<A,T> *rightNode = node->right;
+    node->right = rightNode->right;
+    rightNode->left = node;
     node->height = std::max(getHeight(node->left), getHeight(node->right)) + 1;
-    rightNode.height = std::max(getHeight(rightNode.right), node->height) + 1;
+    rightNode->height = std::max(getHeight(rightNode->right), node->height) + 1;
     node = rightNode;
 }
 
 template<class A, class T>
-void DSAVLTree<A, T>::doubleWithLeftChild(const DSAVLTree<A, T> *&node) {
+void DSAVLTree<A, T>::doubleWithLeftChild(DSAVLTreeNode<A, T> *&node) {
     rotateWithRightChild(node->left);
     rotateWithLeftChild(node);
 }
 
 template<class A, class T>
-void DSAVLTree<A, T>::doubleWithRightChild(const DSAVLTree<A, T> *&node) {
+void DSAVLTree<A, T>::doubleWithRightChild(DSAVLTreeNode<A, T> *&node) {
     rotateWithLeftChild(node->right);
     rotateWithRightChild(node);
 }

@@ -6,6 +6,10 @@
 int main() {
     std::cout << "Hello, World!" << std::endl;
     Catch::Session().run();
-
+    DSAVLTree<int, int> tree;
+    for(int i = 0; i < 5; i++){
+        tree.insert(i,2);
+    }
+    tree.printInOrder();
     return 0;
 }
