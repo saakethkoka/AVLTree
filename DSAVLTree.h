@@ -19,7 +19,7 @@ private:
 
     //print methods
     void printPreOrder(const DSAVLTreeNode<A,T>* node) const;
-    void printInOrderHelper(DSAVLTreeNode<A,T>* node);
+    void printInOrder(const DSAVLTreeNode<A,T>* node) const;
     void printPostOrder(const DSAVLTreeNode<A,T>* node) const;
 
     // Rotation Methods:
@@ -122,7 +122,7 @@ void DSAVLTree<A, T>::printPreOrder() const{
 }
 
 template<class A, class T>
-void DSAVLTree<A, T>::printPreOrder(const DSAVLTreeNode<A, T> *node) const{
+void DSAVLTree<A, T>::printPreOrder(const DSAVLTreeNode<A, T>* node) const{
     if(node == nullptr){
         return;
     }
@@ -133,17 +133,17 @@ void DSAVLTree<A, T>::printPreOrder(const DSAVLTreeNode<A, T> *node) const{
 
 template<class A, class T>
 void DSAVLTree<A,T>::printInOrder() {
-    printInOrderHelper(this->root);
+    printInOrder(root);
 }
 
 template<class A, class T>
-void DSAVLTree<A, T>::printInOrderHelper(DSAVLTreeNode<A, T> *node){
+void DSAVLTree<A, T>::printInOrder(const DSAVLTreeNode<A, T>* node) const{
     if(node == nullptr){
         return;
     }
-    printInOrderHelper(node->left);
+    printInOrder(node->left);
     std::cout << node->key << ": " << node->value << std::endl;
-    printInOrderHelper(node->right);
+    printInOrder(node->right);
 }
 
 template<class A, class T>
@@ -152,7 +152,7 @@ void DSAVLTree<A, T>::printPostOrder() const {
 }
 
 template<class A, class T>
-void DSAVLTree<A, T>::printPostOrder(const DSAVLTreeNode<A, T> *node) const {
+void DSAVLTree<A, T>::printPostOrder(const DSAVLTreeNode<A, T>* node) const {
     if(node == nullptr){
         return;
     }
