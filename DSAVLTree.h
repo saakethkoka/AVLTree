@@ -37,6 +37,7 @@ public:
     DSAVLTree(DSAVLTreeNode<A,T>* root = nullptr); //default constructor
     DSAVLTree(const DSAVLTree& otherTree); //copy constructor
     ~DSAVLTree(); //destructor
+    void destructorHelper(DSAVLTreeNode<A,T>*& node);
 
     // Insertion methods:
     void insert(A key, T value);
@@ -59,19 +60,27 @@ public:
 //TODO is this a deep copy? (verify)
 template<class A, class T>
 DSAVLTree<A, T>::DSAVLTree(DSAVLTreeNode<A, T> *targetNode) {
+    if(targetNode == nullptr){
+        root = nullptr;
+        return;
+    }
     root = new DSAVLTreeNode<A,T>(targetNode->key,targetNode->value,targetNode->left, targetNode->right);
 }
 
 // TODO:
 template<class A, class T>
 DSAVLTree<A, T>::DSAVLTree(const DSAVLTree &otherTree) {
+    if(otherTree.root == nullptr){
+        root = nullptr;
+        return;
+    }
     root = new DSAVLTreeNode<A,T>(otherTree.root->key,otherTree.root->value,otherTree.root->left, otherTree.root->right);
 }
 
 // TODO:
 template<class A, class T>
 DSAVLTree<A, T>::~DSAVLTree() {
-
+    destructorHelper(root);
 }
 
 //TODO
@@ -252,6 +261,17 @@ bool DSAVLTree<A, T>::contains(const A &key) const{
     }
     DSAVLTreeNode<A,T> *node = root;
     return contains(key, node);
+}
+
+template<class A, class T>
+void DSAVLTree<A, T>::destructorHelper(DSAVLTreeNode<A, T> *&node) {
+    if(node == nullptr){
+        return;
+    }
+    destructorHelper(node->left);
+    destructorHelper(node->right);
+    delete node;
+    node = nullptr;
 }
 
 
