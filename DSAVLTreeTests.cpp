@@ -5,7 +5,6 @@
 #include "DSAVLTreeNode.h"
 #include "DSAVLTree.h"
 
-TEST_CASE("DSAVLTree", "[DSAVLTree]"){
-    SECTION("Height"){
-    }
+TEST_CASE("DSAVLTree", "The DSAVL Tree is a self balancing binary search tree"){
+
 }
