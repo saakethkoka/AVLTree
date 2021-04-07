@@ -13,11 +13,15 @@ private:
 
     void insert(A key, T value, DSAVLTreeNode<A,T> *&t);
     void balance(DSAVLTreeNode<A,T> *&t);
+    void printPreOrder(DSAVLTreeNode<A,T> *node);
 public:
     //constructors - destructor
     DSAVLTree(const DSAVLTreeNode<A,T>* root = nullptr); //default constructor
     DSAVLTree(const DSAVLTree& otherTree); //copy constructor
     ~DSAVLTree(); //destructor
+
+    // Insertion methods:
+    void insert(A key, T value);
 
     //overloaded operators
     DSAVLTree<A,T> operator=(const DSAVLTree<A,T> &list2BCopied); //overladed assignment operator
@@ -28,7 +32,7 @@ public:
 
 
     // Traversal Functions:
-    void printPreOrder(DSAVLTreeNode<A,T> node);
+    void printPreOrder();
 
 
 };
@@ -73,6 +77,26 @@ void DSAVLTree<A, T>::insert(A key, T value, DSAVLTreeNode<A, T> *&t) {
 // TODO:
 template<class A, class T>
 void DSAVLTree<A, T>::balance(DSAVLTreeNode<A, T> *&t) {
+
+}
+
+template<class A, class T>
+void DSAVLTree<A, T>::printPreOrder() {
+    printPreOrder(root);
+}
+
+template<class A, class T>
+void DSAVLTree<A, T>::printPreOrder(DSAVLTreeNode<A, T> *node) {
+    if(node == nullptr){
+        return;
+    }
+    std::cout << node->key << ": " << node->value << std::endl;
+    printPreOrder(node->left);
+    printPreOrder(node->right);
+}
+
+template<class A, class T>
+void DSAVLTree<A, T>::insert(A key, T value) {
 
 }
 
