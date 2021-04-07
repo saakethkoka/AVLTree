@@ -12,7 +12,7 @@ private:
     void insert(A key, T value, DSAVLTreeNode<A,T> *&t);
     void balance(DSAVLTreeNode<A,T> *&t);
 public:
-    //constrtors - destructor
+    //constructors - destructor
     DSAVLTree(const DSAVLTreeNode<A,T>* root = nullptr); //default constructor
     DSAVLTree(const DSAVLTree& otherTree); //copy constructor
 
