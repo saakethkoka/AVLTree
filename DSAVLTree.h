@@ -14,6 +14,10 @@ private:
     void insert(A key, T value, DSAVLTreeNode<A,T> *&t);
     void balance(DSAVLTreeNode<A,T> *&t);
 
+    //contains helper
+    bool contains(const A& key, const DSAVLTreeNode<A,T>*& node) const;
+
+    //print methods
     void printPreOrder(const DSAVLTreeNode<A,T>* node) const;
     void printInOrderHelper(DSAVLTreeNode<A,T>* node);
     void printPostOrder(const DSAVLTreeNode<A,T>* node) const;
@@ -39,7 +43,7 @@ public:
     void insert(const DSAVLTreeNode<A,T>*& node);
 
     // Contains Method:
-    bool contains(const A& key);
+    bool contains(const A& key) const;
 
     //overloaded operators
     DSAVLTree<A,T> operator=(const DSAVLTree<A,T> &list2BCopied); //overloaded assignment operator
@@ -205,6 +209,19 @@ void DSAVLTree<A, T>::doubleWithRightChild(DSAVLTreeNode<A, T> *&node) {
     rotateWithLeftChild(node->right);
     rotateWithRightChild(node);
 }
+
+//TODO contains
+template<class A, class T>
+bool DSAVLTree<A, T>::contains(const A &key, const DSAVLTreeNode<A, T> *&node) const {
+    return false;
+}
+
+template<class A, class T>
+bool DSAVLTree<A, T>::contains(const A &key) const{
+    if(this->root->key)
+    return false;
+}
+
 
 
 
