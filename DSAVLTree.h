@@ -61,7 +61,7 @@ public:
 
 };
 
-//TODO is this a deep copy? (verify)
+
 template<class A, class T>
 DSAVLTree<A, T>::DSAVLTree(DSAVLTreeNode<A, T> *targetNode) {
     if(targetNode == nullptr){
@@ -71,7 +71,7 @@ DSAVLTree<A, T>::DSAVLTree(DSAVLTreeNode<A, T> *targetNode) {
     root = new DSAVLTreeNode<A,T>(targetNode->key,targetNode->value,targetNode->left, targetNode->right);
 }
 
-// TODO:
+
 template<class A, class T>
 DSAVLTree<A, T>::DSAVLTree(DSAVLTree &otherTree) {
     if(otherTree.root == nullptr){
@@ -81,13 +81,12 @@ DSAVLTree<A, T>::DSAVLTree(DSAVLTree &otherTree) {
     this->root = clone(otherTree.root);
 }
 
-// TODO:
+
 template<class A, class T>
 DSAVLTree<A, T>::~DSAVLTree() {
     destructorHelper(root);
 }
 
-//TODO
 template<class A, class T>
 DSAVLTree<A, T>& DSAVLTree<A, T>::operator=(const DSAVLTree<A, T>& other) {
     if(this == &other){ //Checks to see if self = self
@@ -120,7 +119,7 @@ void DSAVLTree<A, T>::insert(A key, T value, DSAVLTreeNode<A, T> *&t) {
     balance(t);
 }
 
-// TODO:
+
 template<class A, class T>
 void DSAVLTree<A, T>::balance(DSAVLTreeNode<A, T> *&t) {
     if(getHeight(t->left) - getHeight(t->right) > 1){
@@ -196,7 +195,6 @@ void DSAVLTree<A, T>::insert(A key, T value) {
 
 template<class A, class T>
 void DSAVLTree<A, T>::insert(const DSAVLTreeNode<A, T> *&node) {
-    // TODO: This is very scuffed:
     insert(node->key, node->value, root);
 }
 
@@ -242,7 +240,7 @@ void DSAVLTree<A, T>::doubleWithRightChild(DSAVLTreeNode<A, T> *&node) {
     rotateWithRightChild(node);
 }
 
-//TODO contains
+
 template<class A, class T>
 bool DSAVLTree<A, T>::contains(const A &key, DSAVLTreeNode<A, T> *&node) const {
     if(node == nullptr){
