@@ -31,13 +31,15 @@ private:
     // Get Height of node:
     int getHeight(DSAVLTreeNode<A,T> *&node);
 
-    void clone(DSAVLTreeNode<A,T>*& node);
+    //clone
+    DSAVLTreeNode<A,T>* clone(DSAVLTreeNode<A,T>*& node);
+
 
 
 public:
     //constructors - destructor
     DSAVLTree(DSAVLTreeNode<A,T>* root = nullptr); //default constructor
-    DSAVLTree(const DSAVLTree& otherTree); //copy constructor
+    DSAVLTree(DSAVLTree& otherTree); //copy constructor
     ~DSAVLTree(); //destructor
     void destructorHelper(DSAVLTreeNode<A,T>*& node);
 
@@ -71,12 +73,12 @@ DSAVLTree<A, T>::DSAVLTree(DSAVLTreeNode<A, T> *targetNode) {
 
 // TODO:
 template<class A, class T>
-DSAVLTree<A, T>::DSAVLTree(const DSAVLTree &otherTree) {
+DSAVLTree<A, T>::DSAVLTree(DSAVLTree &otherTree) {
     if(otherTree.root == nullptr){
         root = nullptr;
         return;
     }
-    clone(DSAVLTreeNode<A,T>*& otherTree.root);
+    this->root = clone(otherTree.root);
 }
 
 // TODO:
@@ -98,7 +100,7 @@ DSAVLTree<A, T>& DSAVLTree<A, T>::operator=(const DSAVLTree<A, T>& other) {
         this->root = nullptr; //makes root nullptr is other tree has no data
     }
     else {
-        //do copy construction
+        this->root = clone(other.root);
     }
 
     return *this;
@@ -277,6 +279,14 @@ void DSAVLTree<A, T>::destructorHelper(DSAVLTreeNode<A, T> *&node) {
 }
 
 template<class A, class T>
-void DSAVLTree<A, T>::clone(DSAVLTreeNode<A, T> *&node) {
-
+DSAVLTreeNode<A, T> *DSAVLTree<A, T>::clone(DSAVLTreeNode<A, T>*& node) {
+    if(node == nullptr){
+        return nullptr;
+    }
+    DSAVLTreeNode<A,T>* left = clone(node->left);
+    DSAVLTreeNode<A,T>* right = clone(node->right);
+    return new DSAVLTreeNode<A,T>(node->key,node->value,left,right);
 }
+
+
+
