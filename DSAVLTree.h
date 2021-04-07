@@ -160,7 +160,7 @@ void DSAVLTree<A, T>::printPostOrder(const DSAVLTree<A, T> *node) const {
 
 template<class A, class T>
 void DSAVLTree<A, T>::insert(A key, T value) {
-
+    insert(key, value, root);
 }
 
 template<class A, class T>
@@ -192,6 +192,18 @@ void DSAVLTree<A, T>::rotateWithRightChild(const DSAVLTreeNode<A, T> *&node) {
     node->height = std::max(getHeight(node->left), getHeight(node->right)) + 1;
     rightNode.height = std::max(getHeight(rightNode.right), node->height) + 1;
     node = rightNode;
+}
+
+template<class A, class T>
+void DSAVLTree<A, T>::doubleWithLeftChild(const DSAVLTree<A, T> *&node) {
+    rotateWithRightChild(node->left);
+    rotateWithLeftChild(node);
+}
+
+template<class A, class T>
+void DSAVLTree<A, T>::doubleWithRightChild(const DSAVLTree<A, T> *&node) {
+    rotateWithLeftChild(node->right);
+    rotateWithRightChild(node);
 }
 
 
