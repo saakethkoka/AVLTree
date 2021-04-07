@@ -16,6 +16,7 @@ private:
 
 public:
     DSAVLTreeNode(A key, T value, DSAVLTreeNode* after = nullptr, DSAVLTreeNode* before = nullptr);
+    void calc_height();
 };
 
 template<class A, class T>
@@ -26,6 +27,20 @@ DSAVLTreeNode<A, T>::DSAVLTreeNode(A key, T value, DSAVLTreeNode *left, DSAVLTre
     this->right = right;
     this->height = 0;
 }
+
+template<class A, class T>
+void DSAVLTreeNode<A, T>::calc_height() { //This calulates height
+    if(this->left == nullptr && this->right == nullptr){
+        height = 0;
+    }
+    this->left->calc_height();
+    this->right->calc_height();
+    height = max(this->left->height, this->right->height) + 1;
+}
+
+
+
+
 
 
 

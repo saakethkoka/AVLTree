@@ -141,7 +141,7 @@ int DSAVLTree<A, T>::getHeight(DSAVLTreeNode<A, T> *&node) {
 
 // TODO: I have no idea if this is right:
 template<class A, class T>
-void DSAVLTree<A, T>::rotateWithLeftChild(DSAVLTreeNode<A, T> *&node) {
+void DSAVLTree<A, T>::rotateWithLeftChild(const DSAVLTreeNode<A, T>*& node) {
     DSAVLTreeNode<A,T> leftNode = node->left;
     node->left = leftNode.right;
     leftNode.right = node;
