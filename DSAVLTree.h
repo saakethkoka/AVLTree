@@ -105,14 +105,16 @@ void DSAVLTree<A, T>::balance(DSAVLTreeNode<A, T> *&t) {
         }
     }
     else if(getHeight(t->right) - getHeight(t->left) > 1){
-        if(getHeight(t->right->right) >= getHeight(t->right->left)){
-            rotateWithRightChild(t);
+        if(getHeight(t->right->left) >= getHeight(t->right->right)){
+            doubleWithRightChild(t);
+
         }
         else{
-            doubleWithRightChild(t);
+            rotateWithRightChild(t);
         }
     }
     // TODO: figure out what to do with changing height
+    t->height = std::max(getHeight(t->left), getHeight(t->right)) + 1;
 }
 
 template<class A, class T>
@@ -191,7 +193,7 @@ void DSAVLTree<A, T>::rotateWithLeftChild(DSAVLTreeNode<A, T>*& node) {
 template<class A, class T>
 void DSAVLTree<A, T>::rotateWithRightChild(DSAVLTreeNode<A, T> *&node) {
     DSAVLTreeNode<A,T> *rightNode = node->right;
-    node->right = rightNode->right;
+    node->right = rightNode->left;
     rightNode->left = node;
     node->height = std::max(getHeight(node->left), getHeight(node->right)) + 1;
     rightNode->height = std::max(getHeight(rightNode->right), node->height) + 1;

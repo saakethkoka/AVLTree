@@ -11,5 +11,9 @@ int main() {
         tree.insert(i,2);
     }
     tree.printInOrder();
+    std::cout << std::endl;
+    tree.printPreOrder();
+    std::cout << std::endl;
+    tree.printPostOrder();
     return 0;
 }
