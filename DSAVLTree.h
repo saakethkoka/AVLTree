@@ -2,6 +2,7 @@
 // Created by Saaketh Koka on 4/6/21.
 //
 #pragma once
+#include <iostream>
 #include "DSAVLTreeNode.h"
 
 template<class A, class T>
@@ -15,13 +16,15 @@ public:
     //constructors - destructor
     DSAVLTree(const DSAVLTreeNode<A,T>* root = nullptr); //default constructor
     DSAVLTree(const DSAVLTree& otherTree); //copy constructor
-
     ~DSAVLTree(); //destructor
 
-
-
     //overloaded operators
-    DSAVLTree<A,T> operator=(const DSAVLTree<A,T> &list2BCopied);
+    DSAVLTree<A,T> operator=(const DSAVLTree<A,T> &list2BCopied); //overladed assignment operator
+
+    //print operators
+    void printInOrder(); //in order print
+
+
 
 
 };
