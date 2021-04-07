@@ -56,7 +56,6 @@ public:
 
 };
 
-// TODO:
 template<class A, class T>
 DSAVLTree<A, T>::DSAVLTree(DSAVLTreeNode<A, T> *targetNode) {
     root = targetNode;
@@ -162,10 +161,15 @@ void DSAVLTree<A, T>::printPostOrder(const DSAVLTreeNode<A, T>* node) const {
 }
 
 
-
 template<class A, class T>
 void DSAVLTree<A, T>::insert(A key, T value) {
     insert(key, value, root);
+}
+
+template<class A, class T>
+void DSAVLTree<A, T>::insert(const DSAVLTreeNode<A, T> *&node) {
+    // TODO: This is very scuffed:
+    insert(node->key, node->value, root);
 }
 
 template<class A, class T>
@@ -235,6 +239,8 @@ bool DSAVLTree<A, T>::contains(const A &key) const{
     DSAVLTreeNode<A,T> *node = root;
     return contains(key, node);
 }
+
+
 
 
 
