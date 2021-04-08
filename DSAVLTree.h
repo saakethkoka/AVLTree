@@ -285,6 +285,9 @@ bool DSAVLTree<A, T>::contains(const A &key, DSAVLTreeNode<A, T> *&node) const {
 
 template<class A, class T>
 bool DSAVLTree<A, T>::contains(const A &key) const{
+    if(key == nullptr){
+        throw std::invalid_argument("nullptr input for key - DSAVLTree");
+    }
     if(this->root->key == key){
         return true;
     }
