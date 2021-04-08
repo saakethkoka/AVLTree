@@ -34,6 +34,9 @@ private:
     //clone
     DSAVLTreeNode<A,T>* clone(DSAVLTreeNode<A,T>*& node);
 
+    //destructor helper
+    void destructorHelper(DSAVLTreeNode<A,T>*& node);
+
 
 
 public:
@@ -41,7 +44,6 @@ public:
     DSAVLTree(DSAVLTreeNode<A,T>* root = nullptr); //default constructor
     DSAVLTree(DSAVLTree& otherTree); //copy constructor
     ~DSAVLTree(); //destructor
-    void destructorHelper(DSAVLTreeNode<A,T>*& node);
 
     // Insertion methods:
     void insert(A key, T value);
