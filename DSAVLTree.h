@@ -60,6 +60,7 @@ public:
     void printInOrder() const; // in order print
     void printPostOrder() const; //post order print
 
+    DSAVLTreeNode<A,T>* get_root() const;
 
 };
 
@@ -70,7 +71,7 @@ DSAVLTree<A, T>::DSAVLTree(DSAVLTreeNode<A, T> *targetNode) {
         root = nullptr;
         return;
     }
-    root = new DSAVLTreeNode<A,T>(targetNode->key,targetNode->value,targetNode->left, targetNode->right);
+    this->root = clone(targetNode);
 }
 
 
@@ -286,6 +287,11 @@ DSAVLTreeNode<A, T> *DSAVLTree<A, T>::clone(DSAVLTreeNode<A, T>*& node) {
     DSAVLTreeNode<A,T>* left = clone(node->left);
     DSAVLTreeNode<A,T>* right = clone(node->right);
     return new DSAVLTreeNode<A,T>(node->key,node->value,left,right);
+}
+
+template<class A, class T>
+DSAVLTreeNode<A, T> *DSAVLTree<A, T>::get_root() const{
+    return root;
 }
 
 
