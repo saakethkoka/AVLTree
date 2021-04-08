@@ -14,6 +14,7 @@ private:
     void insert(A key, T value, DSAVLTreeNode<A,T> *&t);
     void balance(DSAVLTreeNode<A,T> *&t);
 
+
     //contains helper
     bool contains(const A& key, DSAVLTreeNode<A,T>*& node) const;
 
@@ -31,7 +32,7 @@ private:
     // Get Height of node:
     int getHeight(DSAVLTreeNode<A,T> *&node);
 
-    //clone
+    // Clone
     DSAVLTreeNode<A,T>* clone(DSAVLTreeNode<A,T>*& node);
 
     //destructor helper
@@ -45,20 +46,42 @@ public:
     DSAVLTree(DSAVLTree& otherTree); //copy constructor
     ~DSAVLTree(); //destructor
 
-    // Insertion methods:
+    /**
+     * Inserts a key value pair into the tree at the proper location and then balances the tree.
+     * @param key
+     * @param value
+     */
     void insert(A key, T value);
+
+    /**
+     * Inserts an AVLTree Node into the Tree and then balance's it.
+     * @param DSAVLTreeNode
+     */
     void insert(const DSAVLTreeNode<A,T>*& node);
 
-    // Contains Method:
+    /**
+     * Output's whether or not a certain key is found in the tree.
+     * @param key
+     * @return bool
+     */
     bool contains(const A& key) const;
 
-    //overloaded operators
+    /**
+     * Assignment Operator
+     * @param other
+     * @return DSAVLTree
+     */
     DSAVLTree<A,T>& operator=(const DSAVLTree<A,T>& other); //overloaded assignment operator
 
-    //print operators
-    void printPreOrder() const; // pre order print
-    void printInOrder() const; // in order print
-    void printPostOrder() const; //post order print
+    /**
+     * Outputs the tree by printing each node the first time it is visited.
+     */
+    void printPreOrder() const;
+    /**
+     * Outputs the tree by printing each node in order.
+     */
+    void printInOrder() const;
+    void printPostOrder() const;
 
     DSAVLTreeNode<A,T>* get_root() const;
 
