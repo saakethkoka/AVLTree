@@ -28,17 +28,6 @@ DSAVLTreeNode<A, T>::DSAVLTreeNode(A key, T value, DSAVLTreeNode *left, DSAVLTre
     this->height = 0;
 }
 
-//TODO do we need this?
-template<class A, class T>
-void DSAVLTreeNode<A, T>::calc_height() { //This calulates height
-    if(this->left == nullptr && this->right == nullptr){
-        height = 0;
-    }
-    this->left->calc_height();
-    this->right->calc_height();
-    height = std::max(this->left->height, this->right->height) + 1;
-}
-
 
 
 
