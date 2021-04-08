@@ -6,5 +6,4 @@
 #include "DSAVLTree.h"
 
 TEST_CASE("DSAVLTree", "The DSAVLTree is a self balancing binary search tree"){
-    //hello there
 }
