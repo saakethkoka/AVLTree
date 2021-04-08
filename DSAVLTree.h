@@ -11,6 +11,10 @@ class DSAVLTree{
 private:
     DSAVLTreeNode<A,T> *root;
 
+    // TODO: Track number of nodes in tree, this is needed when we output statistics in the demo.
+    // Or we can caluclate the number of nodes when we want to output the stats (easier):
+    int numNodes;
+
     void insert(A key, T value, DSAVLTreeNode<A,T> *&t);
     void balance(DSAVLTreeNode<A,T> *&t);
 
