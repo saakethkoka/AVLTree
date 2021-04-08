@@ -16,7 +16,6 @@ private:
 
 public:
     DSAVLTreeNode(A key, T value, DSAVLTreeNode* after = nullptr, DSAVLTreeNode* before = nullptr);
-    void calc_height();
 };
 
 template<class A, class T>
