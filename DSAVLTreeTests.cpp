@@ -14,6 +14,5 @@ TEST_CASE("DSAVLTree", "The DSAVLTree is a self balancing binary search tree"){
         DSAVLTreeNode<int,int> node2(114,337,&node,&node1);
         DSAVLTree<int,int> test2(&node2);
         REQUIRE(test2.get_root() != &node2);
-        //hello
     }
 }
