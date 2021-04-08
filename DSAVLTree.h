@@ -81,8 +81,15 @@ public:
      * Outputs the tree by printing each node in order.
      */
     void printInOrder() const;
+    /**
+     * Outputs the tree by printing each node post order
+     */
     void printPostOrder() const;
 
+    /**
+     * Root node Acessor
+     * @return DSAVLTreeNode*
+     */
     DSAVLTreeNode<A,T>* get_root() const;
 
 };
