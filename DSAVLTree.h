@@ -77,10 +77,12 @@ public:
      * Outputs the tree by printing each node the first time it is visited.
      */
     void printPreOrder() const;
+
     /**
      * Outputs the tree by printing each node in order.
      */
     void printInOrder() const;
+
     /**
      * Outputs the tree by printing each node post order
      */
