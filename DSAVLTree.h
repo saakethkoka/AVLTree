@@ -68,7 +68,7 @@ public:
 
     /**
      * Assignment Operator
-     * @param other
+     * @param tree to be copied
      * @return DSAVLTree
      */
     DSAVLTree<A,T>& operator=(const DSAVLTree<A,T>& other); //overloaded assignment operator
@@ -81,8 +81,14 @@ public:
      * Outputs the tree by printing each node in order.
      */
     void printInOrder() const;
+    /**
+     * Outputs the tree by printing each node after all children were visited.
+     */
     void printPostOrder() const;
-
+    /**
+     * Returns a pointer to the root of the tree.
+     * @return DSAVLTreeNode *
+     */
     DSAVLTreeNode<A,T>* get_root() const;
 
 };
@@ -134,10 +140,10 @@ DSAVLTree<A, T>& DSAVLTree<A, T>::operator=(const DSAVLTree<A, T>& other) {
 template<class A, class T>
 void DSAVLTree<A, T>::insert(A key, T value, DSAVLTreeNode<A, T> *&t) {
     if(t == nullptr){
-        t = new DSAVLTreeNode<A,T>(key,value);
+        t = new DSAVLTreeNode<A,T>(key,value); // Once it finds an empty node it creates a new node there.
     }
     else if(t->key < key){
-        insert(key, value, t->right);
+        insert(key, value, t->right); // Recursively searches for proper place to insert value.
     }
     else if(key < t->key){
         insert(key, value, t->left);
@@ -165,7 +171,7 @@ void DSAVLTree<A, T>::balance(DSAVLTreeNode<A, T> *&t) {
             rotateWithRightChild(t);
         }
     }
-    t->height = std::max(getHeight(t->left), getHeight(t->right)) + 1;
+    t->height = std::max(getHeight(t->left), getHeight(t->right)) + 1; // Updates height
 }
 
 template<class A, class T>
@@ -216,7 +222,8 @@ void DSAVLTree<A, T>::printPostOrder(const DSAVLTreeNode<A, T>* node) const {
 
 template<class A, class T>
 void DSAVLTree<A, T>::insert(A key, T value) {
-    if(key == nullptr || value == nullptr){
+    // TODO: I got error when these were == nullptrs but these seem to work although compiler throws warnings while it compiles:
+    if(key == NULL || value == NULL){
         throw std::invalid_argument("key or value nullptr - DSAVLTree insert");
     }
     insert(key, value, root);
