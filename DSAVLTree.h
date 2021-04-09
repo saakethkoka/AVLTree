@@ -81,14 +81,17 @@ public:
      * Outputs the tree by printing each node the first time it is visited.
      */
     void printPreOrder() const;
+
     /**
      * Outputs the tree by printing each node in order.
      */
     void printInOrder() const;
+
     /**
      * Outputs the tree by printing each node after all children were visited.
      */
     void printPostOrder() const;
+
     /**
      * Returns a pointer to the root of the tree.
      * @return DSAVLTreeNode *
@@ -326,6 +329,7 @@ template<class A, class T>
 DSAVLTreeNode<A, T> *DSAVLTree<A, T>::get_root() const{
     return root;
 }
+
 
 
 

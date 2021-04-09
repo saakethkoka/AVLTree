@@ -24,6 +24,7 @@ TEST_CASE("DSAVLTree", "The DSAVLTree is a self balancing binary search tree"){
             test.insert(i,5*i);
         }
         DSAVLTree<int,int>  test_2(test);
-        REQUIRE(test_2.get_root()->get_value() == test.get_root()->get_value());
+        REQUIRE(!(test.get_root() == test_2.get_root())); //shows that the two have different pointers
+        //have a comparison operator here
     }
 }

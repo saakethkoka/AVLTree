@@ -3,6 +3,7 @@
 //
 
 #pragma once
+#include <iostream>
 
 template<class A, class T>
 class DSAVLTreeNode{
@@ -17,6 +18,8 @@ private:
 public:
     DSAVLTreeNode(A key, T value, DSAVLTreeNode* after = nullptr, DSAVLTreeNode* before = nullptr);
 
+    //overloaded operators
+    bool operator==(const DSAVLTreeNode<A,T>*& other) const;
 
     //acessors
     A& get_key();
@@ -54,6 +57,7 @@ template<class A, class T>
 DSAVLTreeNode<A, T>*& DSAVLTreeNode<A, T>::get_right(){
     return right;
 }
+
 
 
 
