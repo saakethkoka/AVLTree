@@ -17,4 +17,13 @@ TEST_CASE("DSAVLTree", "The DSAVLTree is a self balancing binary search tree"){
         node2.get_key() = 557;
         REQUIRE(test2.get_root()->get_key() == 114);
     }
+
+    SECTION("The DSAVLTree has a copy constructor which allows it to accuartly generate a deep copy of another DSAVLTree"){
+        DSAVLTree<int,int> test;
+        for(int i = 0; i < 1000; i++){
+            test.insert(i,5*i);
+        }
+        DSAVLTree<int,int>  test_2(test);
+        REQUIRE(test_2.get_root()->get_value() == test.get_root()->get_value());
+    }
 }

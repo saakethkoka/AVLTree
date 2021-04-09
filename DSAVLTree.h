@@ -226,18 +226,11 @@ void DSAVLTree<A, T>::printPostOrder(const DSAVLTreeNode<A, T>* node) const {
 
 template<class A, class T>
 void DSAVLTree<A, T>::insert(A key, T value) {
-    // TODO: I got error when these were == nullptrs but these seem to work although compiler throws warnings while it compiles:
-    if(key == NULL || value == NULL){
-        throw std::invalid_argument("key or value nullptr - DSAVLTree insert");
-    }
     insert(key, value, root);
 }
 
 template<class A, class T>
 void DSAVLTree<A, T>::insert(const DSAVLTreeNode<A, T> *&node) {
-    if(node == nullptr){
-        throw std::invalid_argument("node is nullptr - DSAVLTree insert");
-    }
     insert(node->key, node->value, root);
 }
 
@@ -302,9 +295,6 @@ bool DSAVLTree<A, T>::contains(const A &key, DSAVLTreeNode<A, T> *&node) const {
 
 template<class A, class T>
 bool DSAVLTree<A, T>::contains(const A &key) const{
-    if(key == nullptr){
-        throw std::invalid_argument("nullptr input for key - DSAVLTree contains");
-    }
     if(this->root->key == key){
         return true;
     }
