@@ -17,17 +17,13 @@ private:
 public:
     DSAVLTreeNode(A key, T value, DSAVLTreeNode* after = nullptr, DSAVLTreeNode* before = nullptr);
 
-    //acessors
-    A get_key() const;
-    T get_value() const;
-    DSAVLTreeNode<A,T>* get_left() const;
-    DSAVLTreeNode<A,T>* get_right() const;
 
-    //mutators
-    void set_key(A& key);
-    void set_val(T& val);
-    void set_left(DSAVLTreeNode<A,T>*& left);
-    void set_right(DSAVLTreeNode<A,T>*& right);
+    //acessors
+    A& get_key();
+    T& get_value();
+    DSAVLTreeNode<A,T>*& get_left();
+    DSAVLTreeNode<A,T>*& get_right();
+
 };
 
 template<class A, class T>
@@ -38,48 +34,27 @@ DSAVLTreeNode<A, T>::DSAVLTreeNode(A key, T value, DSAVLTreeNode *left, DSAVLTre
     this->right = right;
     this->height = 0;
 }
-
 //acessors
 template<class A, class T>
-A DSAVLTreeNode<A, T>::get_key() const {
+A& DSAVLTreeNode<A, T>::get_key(){
     return key;
 }
 
 template<class A, class T>
-T DSAVLTreeNode<A, T>::get_value() const {
+T& DSAVLTreeNode<A, T>::get_value(){
     return value;
 }
 
 template<class A, class T>
-DSAVLTreeNode<A, T> *DSAVLTreeNode<A, T>::get_left() const {
+DSAVLTreeNode<A, T>*& DSAVLTreeNode<A, T>::get_left(){
     return left;
 }
 
 template<class A, class T>
-DSAVLTreeNode<A, T> *DSAVLTreeNode<A, T>::get_right() const {
+DSAVLTreeNode<A, T>*& DSAVLTreeNode<A, T>::get_right(){
     return right;
 }
 
-//mutators
-template<class A, class T>
-void DSAVLTreeNode<A, T>::set_key(A &key) {
-    this->key = key;
-}
-
-template<class A, class T>
-void DSAVLTreeNode<A, T>::set_val(T &val) {
-    this->value = val;
-}
-
-template<class A, class T>
-void DSAVLTreeNode<A, T>::set_left(DSAVLTreeNode<A, T> *&left) {
-    this->left = left;
-}
-
-template<class A, class T>
-void DSAVLTreeNode<A, T>::set_right(DSAVLTreeNode<A, T> *&right) {
-    this->right = right;
-}
 
 
 
